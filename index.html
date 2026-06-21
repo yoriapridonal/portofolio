@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yori Apridonal M | Portfolio</title>
+    <link rel="icon" href="icon.PNG" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#020617', // Very dark slate
+                        darkCard: '#0f172a',
+                        primary: '#3b82f6',
+                        secondary: '#f59e0b',
+                        accent: '#8b5cf6',
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #020617;
+
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: #0f172a;
+            /* Solid dark background */
+            border: 1px solid #1e293b;
+            /* Solid slate-800 border */
+            border-radius: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 150%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(96, 165, 250, 0.4);
+            box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            filter: blur(10px);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-glow:hover::after {
+            opacity: 0.7;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-glow {
+            position: absolute;
+            inset: -15px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            filter: blur(20px);
+            opacity: 0.8;
+            animation: blob 8s infinite alternate;
+            z-index: 0;
+        }
+
+        .profile-img {
+            position: relative;
+            z-index: 1;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+            object-fit: cover;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6, transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.25rem;
+            width: 14px;
+            height: 14px;
+            background: #020617;
+            border: 3px solid #60a5fa;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.8);
+            z-index: 2;
+        }
+
+        .collapse.show {
+            visibility: visible;
+        }
+
+        .accordion-button {
+            background-color: rgba(15, 23, 42, 0.6) !important;
+            color: #f8fafc !important;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: none !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(59, 130, 246, 0.15) !important;
+            color: #60a5fa !important;
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .accordion-button::after {
+            filter: invert(1);
+        }
+
+        .accordion-body {
+            background-color: rgba(15, 23, 42, 0.4) !important;
+            color: #cbd5e1 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-item {
+            background-color: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            margin-bottom: 0.75rem;
+            border-radius: 0.75rem !important;
+            overflow: hidden;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #cbd5e1 !important;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #60a5fa !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #60a5fa;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+            box-shadow: 0 0 8px #60a5fa;
+        }
+
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .progress-bar-animated {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-animated::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Light Theme Manual Override */
+        body.light-theme {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        body.light-theme::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #f8fafc;
+            z-index: -20;
+        }
+
+        body.light-theme .bg-grid {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px) !important;
+        }
+
+        body.light-theme .text-white,
+        body.light-theme h1,
+        body.light-theme h2,
+        body.light-theme h3 {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .text-slate-400,
+        body.light-theme .text-slate-300,
+        body.light-theme .text-slate-100 {
+            color: #475569 !important;
+        }
+
+        body.light-theme .text-slate-500 {
+            color: #64748b !important;
+        }
+
+        body.light-theme .glass-card,
+        body.light-theme .skill-card {
+            background: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-theme .glass-nav {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .navbar-brand {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .nav-link {
+            color: #475569 !important;
+        }
+
+        body.light-theme .nav-link:hover,
+        body.light-theme .nav-link.active {
+            color: #2563eb !important;
+        }
+
+        body.light-theme .bg-slate-800\/80,
+        body.light-theme .bg-slate-800\/50,
+        body.light-theme .bg-slate-900 {
+            background: #f1f5f9 !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        body.light-theme .text-blue-400,
+        body.light-theme .text-emerald-400,
+        body.light-theme .text-sky-400,
+        body.light-theme .text-purple-400,
+        body.light-theme .text-pink-400 {
+            color: #2563eb !important;
+        }
+
+        body.light-theme .accordion-button {
+            color: #1e293b !important;
+            background-color: #ffffff !important;
+        }
+
+        body.light-theme .accordion-item {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        body.light-theme .bg-blue-500\/10 {
+            background-color: rgba(37, 99, 235, 0.1) !important;
+        }
+    </style>
+</head>
+
+<body class="bg-grid relative">
+
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/30 mix-blend-screen filter blur-[100px] animate-blob">
+        </div>
+        <div class="absolute top-[20%] right-[-10%] w-[35%] h-[35%] rounded-full bg-purple-900/30 mix-blend-screen filter blur-[100px] animate-blob"
+            style="animation-delay: 2s"></div>
+        <div class="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-indigo-900/20 mix-blend-screen filter blur-[100px] animate-blob"
+            style="animation-delay: 4s"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav py-3 transition-all duration-300" id="navbar"
+        data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand font-bold text-2xl text-white tracking-wider flex items-center gap-2" href="#">
+                <img src="icon.PNG" alt="Logo" class="w-8 h-8 rounded-lg object-cover shadow-lg shadow-blue-500/10">
+                YORI APRIDONAL M<span class="text-blue-400"></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none focus:outline-none" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto font-medium space-x-2 text-center lg:text-left mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link px-3" href="#home">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#about">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#experience">Pengalaman</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#skills">Keahlian</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#achievements">Prestasi</a></li>
+                    <li class="nav-item d-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+                        <button id="theme-toggle" class="btn btn-link nav-link p-0 focus:outline-none"
+                            aria-label="Toggle theme">
+                            <i class="fas fa-sun text-xl" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-vh-100 d-flex align-items-center pt-24 pb-12 relative">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-lg-row">
+                <div class="col-lg-7 text-center text-lg-start mt-5 mt-lg-0 z-10" data-aos="fade-right"
+                    data-aos-duration="1200">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium text-sm mb-6 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        Dosen & Profesional IT
+                    </div>
+                    <h1 class="display-3 fw-bold text-white mb-4 leading-tight tracking-tight">
+                        Merancang Solusi <br />
+                        <span class="text-gradient">Sistem Informasi</span>
+                    </h1>
+                    <p class="text-xl text-slate-300 mb-2 font-light">
+                        Halo, Saya <strong class="text-white">Yori Apridonal M, S.Kom., M.Kom</strong>
+                    </p>
+                    <p class="lead text-slate-400 mb-8 max-w-2xl mx-auto mx-lg-0 font-light text-base md:text-lg">
+                        Berdedikasi pada pengembangan web, inovasi, dan manajemen
+                        proyek. Mengubah ide kompleks menjadi produk digital yang elegan dan fungsional.
+                    </p>
+                    <div class="d-flex gap-4 justify-content-center justify-content-lg-start">
+                        <a href="#contact" class="btn btn-glow px-6 py-3 rounded-full font-medium shadow-lg">
+                            <i class="fas fa-paper-plane me-2"></i> Hubungi Saya
+                        </a>
+                        <a href="#experience"
+                            class="btn px-6 py-3 rounded-full font-medium border border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white transition-all duration-300">
+                            Lihat Profil
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center z-10" data-aos="fade-left" data-aos-duration="1200">
+                    <div class="profile-wrapper animate-float">
+                        <div class="profile-glow"></div>
+                        <img src="pic.png" alt="Yori Apridonal M"
+                            class="profile-img w-64 h-64 md:w-80 md:h-80 shadow-2xl object-cover"
+                            onerror="this.src='https://placehold.co/400x400/0f172a/60a5fa?text=Yori+A'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20 relative z-10">
+        <div class="container">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-3">Tentang <span class="text-gradient">Saya</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card p-8 h-100">
+                        <h3 class="text-2xl font-semibold mb-6 text-white flex items-center gap-3">
+                            <i class="fas fa-user-circle text-blue-400"></i> Biodata Pribadi
+                        </h3>
+                        <ul class="space-y-6 text-slate-300 m-0 p-0 list-none">
+                            <li class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-calendar-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-sm text-slate-500 mb-1">Tempat, Tanggal Lahir</span>
+                                    <span id="data-ttl"
+                                        class="font-medium text-slate-100 text-lg blur-md select-none cursor-pointer transition-all duration-300 blur-group-biodata"
+                                        onclick="unblurGroup('blur-group-biodata', this, event)"
+                                        title="Klik untuk melihat data">*************************</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-ring text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-sm text-slate-500 mb-1">Status</span>
+                                    <span id="data-status"
+                                        class="font-medium text-slate-100 text-lg blur-md select-none cursor-pointer transition-all duration-300 blur-group-biodata"
+                                        onclick="unblurGroup('blur-group-biodata', this, event)"
+                                        title="Klik untuk melihat data">*******</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-sm text-slate-500 mb-1">Alamat</span>
+                                    <span id="data-alamat"
+                                        class="font-medium text-slate-100 leading-relaxed blur-md select-none cursor-pointer transition-all duration-300 blur-group-biodata"
+                                        onclick="unblurGroup('blur-group-biodata', this, event)"
+                                        title="Klik untuk melihat alamat">****************************************<br>****************************************<br>****************************************</span>
+                                    <script>
+                                        function unblurGroup(groupClass, element, event) {
+                                            if (event) event.preventDefault();
+
+                                            var isLink = element.tagName.toLowerCase() === 'a';
+                                            var targetSpan = isLink ? element.querySelector('.blur-target') : element;
+                                            if (!targetSpan || !targetSpan.classList.contains('blur-md')) {
+                                                return true;
+                                            }
+
+                                            var pwd = prompt("Masukkan password untuk melihat informasi:");
+                                            if (pwd === null || pwd === '') return false;
+
+                                            // Obfuscated password check
+                                            if (btoa(pwd) === "MzQ5") {
+                                                var encodedData = {
+                                                    ttl: 'UGF5YWt1bWJ1aCwgMDMgQXByaWwgMTk5MA==',
+                                                    status: 'TWVuaWthaA==',
+                                                    alamat: 'SmFsYW4gU2VpIEtvcGFzLCBQZXJ1bS4gRGFtYWkgQXNyaSA3LCBOby4gQTA2PGJyPktlbHVyYWhhbiBTZW5kYW5nIFNhcmksIEtlY2FtYXRhbiBLb3RhIEtpc2FyYW4gQmFyYXQ8YnI+S2FidXBhdGVuIEFzYWhhbiAtIFN1bWF0ZXJhIFV0YXJh',
+                                                    whatsapp_text: 'MDg1Mi04ODIzLTEzODUgKFdoYXRzQXBwKQ==',
+                                                    whatsapp_url: 'aHR0cHM6Ly93YS5tZS82Mjg1Mjg4MjMxMzg1',
+                                                    telegram_text: 'QHlvcmlhcHJpZG9uYWwgKFRlbGVncmFtKQ==',
+                                                    telegram_url: 'aHR0cHM6Ly90Lm1lL3lvcmlhcHJpZG9uYWw='
+                                                };
+
+                                                if (groupClass === 'blur-group-biodata') {
+                                                    document.getElementById('data-ttl').innerHTML = atob(encodedData.ttl);
+                                                    document.getElementById('data-status').innerHTML = atob(encodedData.status);
+                                                    document.getElementById('data-alamat').innerHTML = atob(encodedData.alamat);
+
+                                                    document.querySelectorAll('.blur-group-biodata').forEach(function (el) {
+                                                        el.classList.remove('blur-md', 'select-none', 'cursor-pointer');
+                                                        el.onclick = null;
+                                                        el.title = "";
+                                                    });
+                                                } else if (groupClass === 'blur-group-kontak') {
+                                                    var waLink = document.getElementById('link-whatsapp');
+                                                    var waText = document.getElementById('data-whatsapp');
+                                                    waLink.href = atob(encodedData.whatsapp_url);
+                                                    waText.innerHTML = atob(encodedData.whatsapp_text);
+                                                    waLink.target = "_blank";
+
+                                                    var tgLink = document.getElementById('link-telegram');
+                                                    var tgText = document.getElementById('data-telegram');
+                                                    tgLink.href = atob(encodedData.telegram_url);
+                                                    tgText.innerHTML = atob(encodedData.telegram_text);
+                                                    tgLink.target = "_blank";
+
+                                                    document.querySelectorAll('.blur-group-kontak').forEach(function (el) {
+                                                        el.classList.remove('cursor-pointer');
+                                                        el.title = "";
+                                                        el.onclick = null;
+                                                        var spanEl = el.tagName.toLowerCase() === 'a' ? el.querySelector('.blur-target') : el;
+                                                        if (spanEl) spanEl.classList.remove('blur-md', 'select-none');
+                                                    });
+                                                }
+                                            } else {
+                                                alert("Password salah!");
+                                            }
+
+                                            return false;
+                                        }
+                                    </script>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200" id="contact">
+                    <div class="glass-card p-8 h-100 relative overflow-hidden group">
+                        <!-- BG Accent -->
+                        <div
+                            class="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-600/20 rounded-full blur-[50px] group-hover:bg-blue-500/30 transition-all duration-500">
+                        </div>
+
+                        <h3 class="text-2xl font-semibold mb-6 text-white flex items-center gap-3 relative z-10">
+                            <i class="fas fa-envelope-open-text text-blue-400"></i> Kontak & Sosial Media
+                        </h3>
+                        <ul class="space-y-6 text-slate-300 m-0 p-0 list-none relative z-10">
+                            <li>
+                                <a href="#" id="link-whatsapp"
+                                    onclick="return unblurGroup('blur-group-kontak', this, event)"
+                                    class="flex items-center gap-4 group/item text-decoration-none cursor-pointer blur-group-kontak"
+                                    title="Klik untuk melihat data">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-300 group-hover/item:bg-emerald-500 group-hover/item:text-white transition-all duration-300">
+                                        <i class="fab fa-whatsapp text-xl"></i>
+                                    </div>
+                                    <span id="data-whatsapp"
+                                        class="blur-target font-medium text-lg text-slate-300 group-hover/item:text-emerald-400 transition-colors blur-md select-none">*************************</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" id="link-telegram"
+                                    onclick="return unblurGroup('blur-group-kontak', this, event)"
+                                    class="flex items-center gap-4 group/item text-decoration-none cursor-pointer blur-group-kontak"
+                                    title="Klik untuk melihat data">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-300 group-hover/item:bg-sky-500 group-hover/item:text-white transition-all duration-300">
+                                        <i class="fab fa-telegram-plane text-xl"></i>
+                                    </div>
+                                    <span id="data-telegram"
+                                        class="blur-target font-medium text-lg text-slate-300 group-hover/item:text-sky-400 transition-colors blur-md select-none">*************************</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:yori.apridonal@gmail.com"
+                                    class="flex items-center gap-4 group/item text-decoration-none">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-300 group-hover/item:bg-purple-500 group-hover/item:text-white transition-all duration-300">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <span
+                                        class="font-medium text-lg text-slate-300 group-hover/item:text-purple-400 transition-colors">yori.apridonal@gmail.com</span>
+                                </a>
+                            </li>
+                            <li class="pt-6 border-t border-slate-700/50 mt-4">
+                                <span class="block text-sm text-slate-400 mb-4">Mari terhubung di
+                                    (@yoriapridonal)</span>
+                                <div class="flex gap-3 flex-wrap">
+                                    <a href="https://www.facebook.com/yoriapridonal" target="_blank"
+                                        class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-blue-600 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/yoriapridonal" target="_blank"
+                                        class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-pink-600 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300"><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a href="https://x.com/yoriapridonal" target="_blank"
+                                        class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-slate-300 hover:text-slate-900 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://www.youtube.com/@YoriApridonal" target="_blank"
+                                        class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-red-600 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300"><i
+                                            class="fab fa-youtube"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience" class="py-20 relative z-10 bg-transparent border-y border-white/5">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Work Experience -->
+                <div class="col-lg-6">
+                    <div class="mb-10" data-aos="fade-right">
+                        <div class="inline-flex items-center gap-3 mb-2">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-white">Pengalaman Kerja</h2>
+                        </div>
+                    </div>
+
+                    <div class="timeline-container">
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-bold tracking-wider mb-3 shadow-[0_0_10px_rgba(59,130,246,0.2)]">JUNI
+                                2025 - SEKARANG</span>
+                            <div class="glass-card p-5">
+                                <h4 class="text-xl font-semibold text-white mb-1">Ka. Divisi Bidang Karya Ilmiah
+                                    Mahasiswa</h4>
+                                <p class="text-slate-400 m-0"><i class="fas fa-building me-2 opacity-50"></i>Universitas
+                                    Royal</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-bold tracking-wider mb-3 shadow-[0_0_10px_rgba(59,130,246,0.2)]">JANUARI
+                                2023 - SEKARANG</span>
+                            <div class="glass-card p-5">
+                                <h4 class="text-xl font-semibold text-white mb-1">Ka. Lembaga Connect Inkubator Bisnis
+                                </h4>
+                                <p class="text-slate-400 m-0"><i class="fas fa-building me-2 opacity-50"></i>Universitas
+                                    Royal</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full bg-slate-700 border border-slate-600 text-slate-300 text-xs font-bold tracking-wider mb-3">DESEMBER
+                                2020</span>
+                            <div class="glass-card p-5 border-slate-700/50 bg-slate-800/30">
+                                <h4 class="text-xl font-semibold text-white mb-1">Ka. Divisi Kekayaan Intelektual,
+                                    Promosi & Pemasaran</h4>
+                                <p class="text-slate-400 m-0"><i class="fas fa-building me-2 opacity-50"></i>Universitas
+                                    Royal</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full bg-slate-700 border border-slate-600 text-slate-300 text-xs font-bold tracking-wider mb-3">SEPTEMBER
+                                2018 - SEKARANG</span>
+                            <div class="glass-card p-5 border-slate-700/50 bg-slate-800/30">
+                                <h4 class="text-xl font-semibold text-white mb-1">Dosen Prodi Sistem Informasi</h4>
+                                <p class="text-slate-400 m-0"><i class="fas fa-building me-2 opacity-50"></i>Universitas
+                                    Royal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="col-lg-6">
+                    <div class="mb-10" data-aos="fade-left">
+                        <div class="inline-flex items-center gap-3 mb-2">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                                <i class="fas fa-graduation-cap text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-white">Riwayat Pendidikan</h2>
+                        </div>
+                    </div>
+
+                    <div
+                        class="timeline-container before:!bg-gradient-to-b before:!from-purple-500 before:!to-pink-500">
+                        <div class="timeline-item before:!border-purple-400 before:!shadow-[0_0_10px_rgba(168,85,247,0.8)]"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-bold tracking-wider mb-3 shadow-[0_0_10px_rgba(168,85,247,0.2)]">2014
+                                - 2016</span>
+                            <div
+                                class="glass-card p-5 hover:!border-purple-400/40 hover:!shadow-[0_10px_40px_-10px_rgba(168,85,247,0.3)]">
+                                <h4 class="text-xl font-semibold text-white mb-2">S2 Magister Ilmu Komputer <span
+                                        class="text-purple-400">(M.Kom)</span></h4>
+                                <p class="text-slate-400 m-0"><i
+                                        class="fas fa-university me-2 opacity-50"></i>Universitas Putra Indonesia "YPTK"
+                                    Padang</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item before:!border-pink-400 before:!shadow-[0_0_10px_rgba(236,72,153,0.8)]"
+                            data-aos="fade-up" data-aos-delay="200">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full bg-pink-500/20 border border-pink-500/30 text-pink-300 text-xs font-bold tracking-wider mb-3 shadow-[0_0_10px_rgba(236,72,153,0.2)]">2008
+                                - 2013</span>
+                            <div
+                                class="glass-card p-5 hover:!border-pink-400/40 hover:!shadow-[0_10px_40px_-10px_rgba(236,72,153,0.3)]">
+                                <h4 class="text-xl font-semibold text-white mb-2">S1 Sistem Informasi <span
+                                        class="text-pink-400">(S.Kom)</span></h4>
+                                <p class="text-slate-400 m-0"><i
+                                        class="fas fa-university me-2 opacity-50"></i>Universitas Putra Indonesia "YPTK"
+                                    Padang</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Projects -->
+    <section id="skills" class="py-20 relative z-10">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Skills Column -->
+                <div class="col-lg-5" data-aos="fade-right">
+                    <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+                        <i class="fas fa-laptop-code text-blue-400"></i> Keahlian Utama
+                    </h2>
+
+                    <div class="space-y-5 mb-12">
+                        <!-- Skill Item -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-200 font-medium">Web Programming</span>
+                                <span class="text-blue-400 text-sm">93%</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full progress-bar-animated rounded-full" style="width: 93%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-200 font-medium">Framework Code Igniter</span>
+                                <span class="text-purple-400 text-sm">91%</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full relative overflow-hidden after:content-[''] after:absolute after:inset-0 after:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent)] after:animate-[shimmer_2s_infinite]"
+                                    style="width: 91%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-200 font-medium">Mobile Programming (Flutter)</span>
+                                <span class="text-blue-400 text-sm">90%</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full progress-bar-animated rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-200 font-medium">Desain Grafis (Photoshop, Canva)</span>
+                                <span class="text-purple-400 text-sm">85%</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full relative overflow-hidden after:content-[''] after:absolute after:inset-0 after:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent)] after:animate-[shimmer_2s_infinite]"
+                                    style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-200 font-medium">Computer Network & IT Support</span>
+                                <span class="text-pink-400 text-sm">80%</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-pink-500 to-orange-400 rounded-full relative overflow-hidden after:content-[''] after:absolute after:inset-0 after:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent)] after:animate-[shimmer_2s_infinite]"
+                                    style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-white mb-4">Matakuliah Yang Pernah Diampu</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default">Basis
+                            Data</span>
+                        <span
+                            class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default">Pemrograman
+                            Visual</span>
+                        <span
+                            class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default">Desain
+                            Web</span>
+                        <span
+                            class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default">Web
+                            Programing</span>
+                        <span
+                            class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default">Sistem
+                            Informasi Geografis</span>
+                        <span
+                            class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default">Mobile
+                            Programing</span>
+                        <span
+                            class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default">Manajemen
+                            Proyek SI</span>
+                        <span
+                            class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all cursor-default">Fuzzy
+                            Logic</span>
+                    </div>
+                </div>
+
+                <!-- Projects Column -->
+                <div class="col-lg-7" data-aos="fade-left">
+                    <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+                        <i class="fas fa-project-diagram text-purple-400"></i> Portofolio Project
+                    </h2>
+
+                    <div class="row g-4">
+                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="glass-card h-100 p-1 group">
+                                <div class="bg-slate-900/80 rounded-xl p-6 h-100 relative overflow-hidden">
+                                    <div
+                                        class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all">
+                                    </div>
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-2xl mb-5 shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-cash-register"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-white mb-3">Aplikasi Kasir</h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                        Sistem Point of Sales (POS) cerdas untuk mempermudah proses transaksi ritel,
+                                        pencatatan inventory otomatis, dan pelaporan keuangan real-time.
+                                    </p>
+                                    <span
+                                        class="inline-block px-3 py-1 rounded bg-slate-800 text-xs text-slate-300 border border-slate-700">Point
+                                        of Sales</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="glass-card h-100 p-1 group">
+                                <div class="bg-slate-900/80 rounded-xl p-6 h-100 relative overflow-hidden">
+                                    <div
+                                        class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all">
+                                    </div>
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl mb-5 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-store"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-white mb-3">Aplikasi UMKM</h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                        Suite perangkat lunak komprehensif yang dirancang khusus untuk mendigitalisasi
+                                        operasional berbagai sektor usaha mikro, kecil, dan menengah.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-2 py-1 rounded bg-slate-800 text-[10px] text-slate-300 border border-slate-700">Apotek</span>
+                                        <span
+                                            class="px-2 py-1 rounded bg-slate-800 text-[10px] text-slate-300 border border-slate-700">Minimarket</span>
+                                        <span
+                                            class="px-2 py-1 rounded bg-slate-800 text-[10px] text-slate-300 border border-slate-700">Distro</span>
+                                        <span
+                                            class="px-2 py-1 rounded bg-slate-800 text-[10px] text-slate-300 border border-slate-700">Ayam
+                                            Geprek</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="glass-card h-100 p-1 group">
+                                <div class="bg-slate-900/80 rounded-xl p-6 h-100 relative overflow-hidden">
+                                    <div
+                                        class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all">
+                                    </div>
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center text-white text-2xl mb-5 shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-school"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-white mb-3">Aplikasi SPMB SMP Kabupaten</h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                        Sistem Penerimaan Murid Baru (SPMB) SMP terintegrasi untuk **Dinas Pendidikan
+                                        Kabupaten Asahan**. Solusi digital yang memodernisasi seleksi, verifikasi, dan
+                                        pendaftaran siswa secara transparan, akuntabel, dan real-time guna mendukung
+                                        efisiensi birokrasi dan pemerataan akses pendidikan daerah.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 rounded bg-slate-800 text-xs text-slate-300 border border-slate-700">Dinas
+                                            Pendidikan</span>
+                                        <span
+                                            class="px-3 py-1 rounded bg-slate-800 text-xs text-slate-300 border border-slate-700">Sistem
+                                            Informasi</span>
+                                        <span
+                                            class="px-3 py-1 rounded bg-slate-800 text-xs text-slate-300 border border-slate-700">Kab.
+                                            Asahan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Buku -->
+    <section id="achievements" class="py-20 relative z-10 bg-transparent border-t border-white/5">
+        <div class="container">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-3">Prestasi & <span class="text-gradient">Publikasi</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-8"></div>
+
+                <a href="https://scholar.google.co.id/citations?user=Kh000T4AAAAJ&hl=id&oi=ao" target="_blank"
+                    class="inline-flex items-center gap-3 px-8 py-3 rounded-full glass border border-blue-500/30 text-blue-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-300 group shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]">
+                    <i
+                        class="fas fa-graduation-cap text-xl group-hover:scale-125 transition-transform duration-300"></i>
+                    <span class="font-medium tracking-wide">Lihat Profil Google Scholar</span>
+                </a>
+            </div>
+
+            <div class="row g-5">
+                <!-- Achievements Accordion -->
+                <div class="col-lg-7" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-yellow-500/20 text-yellow-500 flex items-center justify-center">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        Penghargaan & Pendanaan
+                    </h3>
+
+                    <div class="accordion" id="achievementAccordion">
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button font-medium tracking-wide" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#ach1" aria-expanded="true">
+                                    KMI Expo 2024 - Univ. Halu Oleo
+                                </button>
+                            </h2>
+                            <div id="ach1" class="accordion-collapse collapse show"
+                                data-bs-parent="#achievementAccordion">
+                                <div class="accordion-body">
+                                    <p class="mb-0 text-sm leading-relaxed">
+                                        Lolos Kewirausahaan Mahasiswa Indonesia (KMI) Expo 2024 di Universitas Halu
+                                        Oleo, Kendari, Sulawesi Tenggara Sebagai <strong>Dosen Pendamping</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="150">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed font-medium tracking-wide" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#ach2">
+                                    Pendanaan P2MW Kemenristekdikti - 2024
+                                </button>
+                            </h2>
+                            <div id="ach2" class="accordion-collapse collapse" data-bs-parent="#achievementAccordion">
+                                <div class="accordion-body">
+                                    <span
+                                        class="inline-block px-2 py-1 rounded bg-blue-500/20 text-blue-400 text-xs mb-3 border border-blue-500/30">Dosen
+                                        Pendamping</span>
+                                    <p class="mb-0 text-sm leading-relaxed">
+                                        <strong>Judul Penelitian:</strong> "Banana Chips By Risa Snack Koin Kekinian
+                                        Dengan Pemanfaatan Potensi Buah Pisang Lokal"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed font-medium tracking-wide" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#ach3">
+                                    Pendanaan PKM-K Kemenristekdikti - 2024
+                                </button>
+                            </h2>
+                            <div id="ach3" class="accordion-collapse collapse" data-bs-parent="#achievementAccordion">
+                                <div class="accordion-body">
+                                    <span
+                                        class="inline-block px-2 py-1 rounded bg-blue-500/20 text-blue-400 text-xs mb-3 border border-blue-500/30">Dosen
+                                        Pendamping</span>
+                                    <p class="mb-0 text-sm leading-relaxed">
+                                        <strong>Judul Penelitian:</strong> "Inovasi Frozen Food Fortifikasi Ikan Patin
+                                        dan Daun Kelor Dilengkapi Barcode Terintegrasi Aplikasi Pengolahan Kreatif
+                                        Cemilan Sehat Pencegah Stunting Anak"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="250">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed font-medium tracking-wide" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#ach4">
+                                    Pendanaan PKM-RE Kemenristekdikti - 2023
+                                </button>
+                            </h2>
+                            <div id="ach4" class="accordion-collapse collapse" data-bs-parent="#achievementAccordion">
+                                <div class="accordion-body">
+                                    <span
+                                        class="inline-block px-2 py-1 rounded bg-blue-500/20 text-blue-400 text-xs mb-3 border border-blue-500/30">Dosen
+                                        Pendamping</span>
+                                    <p class="mb-0 text-sm leading-relaxed">
+                                        <strong>Judul Penelitian:</strong> "Pengaruh Aplikasi Makanan Bergizi Seimbang
+                                        Pencegah Stunting Balita Menggunakan Metode Dempster Shafer Dan Naive Bayes"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed font-medium tracking-wide" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#ach5">
+                                    Hibah Penelitian Dosen Pemula (PDP) - 2020
+                                </button>
+                            </h2>
+                            <div id="ach5" class="accordion-collapse collapse" data-bs-parent="#achievementAccordion">
+                                <div class="accordion-body">
+                                    <p class="mb-0 text-sm leading-relaxed">
+                                        <strong>Judul Penelitian:</strong> "Kombinasi Metode AHP dan MFEP Dalam Upaya
+                                        Meningkatkan Kualitas Penerima Bantuan Siswa Miskin"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List Buku -->
+                <div class="col-lg-5" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        Karya Buku
+                    </h3>
+
+                    <div class="glass-card p-6 border-t-4 border-t-pink-500">
+                        <ul
+                            class="space-y-6 m-0 p-0 list-none relative before:absolute before:inset-y-0 before:left-[11px] before:w-[2px] before:bg-slate-800">
+                            <li class="relative pl-8">
+                                <div
+                                    class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border-2 border-pink-500 flex items-center justify-center z-10">
+                                    <div class="w-2 h-2 rounded-full bg-pink-500 shadow-[0_0_8px_#ec4899]"></div>
+                                </div>
+                                <span class="text-pink-400 font-bold tracking-wider text-sm block mb-2">2025</span>
+                                <div class="space-y-2">
+                                    <div
+                                        class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 text-sm text-slate-300 hover:bg-slate-800 transition-colors">
+                                        Fondasi Data Science: Algoritma, Statistik dan Pemrograman Python</div>
+                                    <div
+                                        class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 text-sm text-slate-300 hover:bg-slate-800 transition-colors">
+                                        Machine Learning</div>
+                                    <div
+                                        class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 text-sm text-slate-300 hover:bg-slate-800 transition-colors">
+                                        Sistem Informasi Manajemen</div>
+                                </div>
+                            </li>
+                            <li class="relative pl-8">
+                                <div
+                                    class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border-2 border-purple-500 flex items-center justify-center z-10">
+                                </div>
+                                <span class="text-purple-400 font-bold tracking-wider text-sm block mb-2">2024</span>
+                                <div class="space-y-2">
+                                    <div
+                                        class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 text-sm text-slate-300 hover:bg-slate-800 transition-colors">
+                                        Supply Chain Management Dalam Penerapan Bahan Baku GFC</div>
+                                    <div
+                                        class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 text-sm text-slate-300 hover:bg-slate-800 transition-colors">
+                                        Metode Moora Pemilihan Guru Terbaik</div>
+                                </div>
+                            </li>
+                            <li class="relative pl-8">
+                                <div
+                                    class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border-2 border-blue-500 flex items-center justify-center z-10">
+                                </div>
+                                <span class="text-blue-400 font-bold tracking-wider text-sm block mb-2">2023</span>
+                                <div
+                                    class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 text-sm text-slate-300 hover:bg-slate-800 transition-colors">
+                                    Dasar-Dasar Sistem Informasi Geografis Berbasis Web</div>
+                            </li>
+                            <li class="relative pl-8">
+                                <div
+                                    class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border-2 border-cyan-500 flex items-center justify-center z-10">
+                                </div>
+                                <span class="text-cyan-400 font-bold tracking-wider text-sm block mb-2">2022</span>
+                                <div class="space-y-2">
+                                    <div
+                                        class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 text-sm text-slate-300 hover:bg-slate-800 transition-colors">
+                                        Buku Ajar Logika Fuzzy</div>
+                                    <div
+                                        class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 text-sm text-slate-300 hover:bg-slate-800 transition-colors">
+                                        Sistem Terintegrasi Menggunakan API; Implementasi Website dan Android</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#01040f] border-t border-slate-800 py-6 relative z-10 overflow-hidden">
+        <p class="text-center text-slate-500 m-0 font-light">
+            &copy;
+            <script>document.write(new Date().getFullYear())</script> Yori Apridonal M | All rights reserved.
+        </p>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Navbar blur effect on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'shadow-blue-900/10');
+                navbar.classList.replace('py-3', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-lg', 'shadow-blue-900/10');
+                navbar.classList.replace('py-2', 'py-3');
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            body.classList.add('light-theme');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeToggleBtn.addEventListener('click', function () {
+            body.classList.toggle('light-theme');
+
+            if (body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+    </script>
+</body>
+
+</html>
